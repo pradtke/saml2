@@ -189,7 +189,7 @@ class UtilsTest extends \PHPUnit_Framework_TestCase
             $this->assertTrue($shouldPass);
             $this->assertEquals($expectedTs, $ts);
         } catch (\Exception $e) {
-            $this->assertFalse($shouldPass);
+            $this->assertFalse($shouldPass, $time);
         }
     }
 
@@ -197,12 +197,14 @@ class UtilsTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array(true, '2015-01-01T00:00:00Z', 1420070400),
+            array(true, '2019-01-01T00:00:00Z', 1546300800),
             array(true, '2015-01-01T00:00:00.0Z', 1420070400),
             array(true, '2015-01-01T00:00:00.1Z', 1420070400),
             array(true, '2015-01-01T00:00:00.321Z', 1420070400),
             array(true, '2015-01-01T00:00:00.587Z', 1420070400),
             array(true, '2015-01-01T00:00:00.123456Z', 1420070400),
             array(true, '2015-01-01T00:00:00.1234567Z', 1420070400),
+            array(true, '2019-04-16T20:54:13', 1555448053),
             array(false, '2015-01-01T00:00:00', 1420070400),
             array(false, '2015-01-01T00:00:00.0', 1420070400),
             array(false, 'junk'),
